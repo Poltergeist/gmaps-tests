@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha --compilers js:babel-core/register",
     "build": "browserify src/app.js --outfile dist/index.js --transform=babelify",
-    "watch:build": "watch 'npm run build' src --wait=1"
+    "watch:build": "watch 'npm run build' src"
   },
   "author": "",
   "license": "MIT",

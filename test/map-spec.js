@@ -9,14 +9,19 @@ assert.called = sinon.assert.called;
 assert.calledWith = sinon.assert.calledWith;
 
 describe('The map', function () {
+  const mapInstance = {};
+
   let map,
     position = {lat: 0, lng: 0},
     mapInterface = () => {
-      return true;
+      return mapInstance; // google.maps.Map()
+    },
+    markerInterface = () => {
+      return true; // google.maps.Marker()
     };
 
     beforeEach(function() {
-      map = new Map(mapInterface, position);
+      map = new Map(position, mapInterface, markerInterface);
     });
 
   describe('should setup', function () {
@@ -31,10 +36,12 @@ describe('The map', function () {
 
   describe('should add marker', function () {
     it('at position', function () {
-      map.markerInterface = sinon.stub();
+      let markerInterface = sinon.stub();
+
+      map = new Map(position, mapInterface, markerInterface);
 
       map.setMarkerAtCurrentPosition();
-      assert.calledWith(map.markerInterface, map.mapInstance);
+      assert.calledWith(markerInterface, mapInstance, position);
     });
   });
 });

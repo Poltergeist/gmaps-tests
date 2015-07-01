@@ -6,10 +6,19 @@ const position = {
 };
 
 function mapInterface(position) {
-  new google.maps.Map(document.getElementById('map'), {
+  return new google.maps.Map(document.getElementById('map'), {
     center: position,
     zoom: 13
   });
 }
 
-new Map(mapInterface, position);
+function markerInterface(map, position) {
+  new google.maps.Marker({
+    map: map,
+    position: position
+  });
+}
+
+let map = new Map(position, mapInterface, markerInterface);
+
+map.setMarkerAtCurrentPosition();
