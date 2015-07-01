@@ -1,9 +1,10 @@
 export default class Map {
-  constructor(position) {
-    this.gMap = new google.maps.Map(document.getElementById('map'), {
-      center: position,
-      zoom: 13
-    });
-    
+  constructor(mapInterface, position) {
+    this.position = position;
+    this.mapInstance = mapInterface(this.position);
+  }
+
+  setMarkerAtCurrentPosition() {
+    this.markerInterface(this.mapInstance);
   }
 }
