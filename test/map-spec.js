@@ -6,6 +6,7 @@ import sinon from 'sinon';
 import Map from '../src/map.js';
 import MapInterfaceDouble from './mapInterface.js';
 import Google from '../src/google.js';
+import Leaflet from '../src/leaflet.js';
 
 assert.called = sinon.assert.called;
 assert.calledWith = sinon.assert.calledWith;
@@ -63,6 +64,7 @@ describe('The map', function () {
   });
 
   mapsInterfaceCheck(Google);
+  mapsInterfaceCheck(Leaflet);
   mapsInterfaceCheck(MapInterfaceDouble);
 });
 
